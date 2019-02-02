@@ -1,0 +1,257 @@
+<main role="main" xmlns="http://www.w3.org/1999/html">
+
+  <div class="jumbotron bg" style="padding-bottom: 80px;" [style.backgroundImage]="'url('+ imageUrl +')'">
+    <div class="container jumbotronContainer" style="background: rgba(0,0,0,0.5);margin-left: 0;padding: 10px;max-width: 900px;">
+
+      <form class="form" *ngIf="isHotel" #f1="ngForm" (ngSubmit)="submitHotels(f1)">
+        <h3 style="color: white;text-align: center;">Latest reviews Lowest prices</h3>
+        <div class="form-group">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6"  id="myForm_1">
+                <label for="inputAddress2">City,Hotel</label>
+                <input type="text" [attr.list]="Listname" ngModel name="hotelname" class="form-control" id="inputAddress2" placeholder="Name" (keyup)="onKey($event)">
+
+              </div>
+              <div class="col-md-6">
+                <div class="container">
+                  <label>Rooms</label>
+                  <div class="row">
+                    <div class="col-2" style="padding-right: 0">
+                      <input type="button" class="btn btn-block" (click)="ModeifyPicker(-1)" value="-">
+                    </div>
+                    <div class="col-4" style="text-align: center;padding: 0px;margin-top: 4px">
+                      <input type="number" id="picker" ngModel name="numberPicker" [(ngModel)]="No_of_Rooms" style="text-align: center" >
+                    </div>
+                    <div class="col-2" style="padding-right: 0px">
+                      <input type="button" class="btn btn-block" (click)="ModeifyPicker(1)" value="+">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group row" style="margin-top: 1%;margin-left: 0.5%;">
+          <div class="col-md-4">
+            <label for="inputAddress2">Check In</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class='fa fa-calendar' aria-hidden="true"></i></span>
+              </div>
+              <input type="date" class="form-control" ngModel name="checkIn" aria-label="Amount (to the nearest dollar)">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <label for="inputAddress2">Check Out</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class='fa fa-calendar' aria-hidden="true"></i></span>
+              </div>
+              <input type="date" class="form-control" ngModel name="checkout" aria-label="Amount (to the nearest dollar)">
+            </div>
+          </div>
+          <div class="col-md-4 searchbtn">
+            <div>
+              <button type="submit" class="btn btn-info">Search</button>
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <form class="form" *ngIf="isRestaurant" #f2="ngForm" (ngSubmit)="submitRestaurants(f2)">
+        <h3 style="color: white;text-align: center;">Find your perfect restaurant</h3>
+        <div class="form-group">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-8">
+                <label for="inputAddress2">City, Restaurant Name</label>
+                <input type="text" class="form-control" placeholder="Name" ngModel name="restaurantName">
+
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label for="inputAddress2">Restaurant Type</label><br>
+                <select class='select-option' name="type" required [(ngModel)]='rest_OptionSelected' (ngModelChange)='onOptionsSelected($event)'>
+                  <option class='option' *ngFor='let option of Restaurantoptions' [value]="option">{{option}}</option>
+                </select>
+              </div>
+              <div class="col-md-4 searchbtn" style="text-align: left">
+                <button type="submit" class="btn btn-info">Search</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <form class="form" *ngIf="isTravel">
+        <h3 style="color: white;text-align: center;">Find the best travel type with the right price</h3>
+        <div class="container">
+
+          <!-- pills tabs -->
+          <tabset [pills]="true">
+            <tab title="Flight">
+              <form class="form" #f3="ngForm" (ngSubmit)="submitFlights(f3)">
+                <div class="form-group row" style="margin-top: 3%;">
+                  <div class="col-md-4">
+                    <div class="input-group"> <span class="input-group-text"><i class="fa fa-plane" aria-hidden="true"></i></span>
+                      <input type="text" class="form-control" placeholder="Departure airport" ngModel name="depart"> </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class='fa fa-calendar' aria-hidden="true"></i></span>
+                      </div>
+                      <input type="date" class="form-control" ngModel name="DepartDate">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="input-group">
+                      <select class="form-control" style="border-radius: 5%;width: 140%;" ngModel name="DepartClass">
+                        <option value="Economy">Economy class</option>
+                        <option value="Business">Business class</option>
+                        <option value="First">First class</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-md-4">
+                    <div class="input-group"> <span class="input-group-text"><i class="fa fa-plane" aria-hidden="true"></i></span>
+                      <input type="text" class="form-control" placeholder="Arrival airport" ngModel name="arrival"> </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="input-group"> <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                      <input type="date" class="form-control" placeholder="Returning" ngModel name="arrivalDate"> </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="input-group">
+                      <select class="form-control" style="border-radius: 5%;width: 140%;" ngModel name="ArrivalClass">
+                        <option value="Economy">Economy class</option>
+                        <option value="Business">Business class</option>
+                        <option value="First">First class</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <hr style="background-color: white">
+                <div class="row">
+                  <div class="col-2">
+                    <label class="radio">
+                      <input type="radio" name="Round_radio" value="Round Trip" ngModel>
+                      <span class="sp">Round Trip</span>
+                    </label>
+                  </div>
+                  <div class="col-2">
+                    <label class="radio">
+                      <input type="radio" name="One_Way_radio" value="One Way" ngModel>
+                      <span class="sp">One Way</span>
+                    </label>
+                  </div>
+                  <div class="col-3">
+                    <label for="inputAddress2">Adult</label>
+                    <select class='select-option' name="Adultdrop" required [(ngModel)]='adultOptionSelected' (ngModelChange)='onOptionsSelected($event)' style="height: 80%">
+                      <option class='option' *ngFor='let option of Seatsoptions' [value]="option">{{option}}</option>
+                    </select>
+                  </div>
+                  <div class="col-3">
+                    <label for="inputAddress2">Child</label>
+                    <select class='select-option' name="Childdrop" required [(ngModel)]='childOptionSelected' (ngModelChange)='onOptionsSelected($event)' style="height: 80%">
+                      <option class='option' *ngFor='let option of Seatsoptions' [value]="option">{{option}}</option>
+                    </select>
+                  </div>
+                  <div class="col-2" style="text-align: center">
+                    <button type="submit" class="btn btn-info" >Search</button>
+                  </div>
+                </div>
+              </form>
+            </tab>
+            <tab title="Road">
+              <form class="form" #f4="ngForm" (ngSubmit)="submitRoads(f4)">
+                <div class="form-group">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-md-3"  id="myForm_2">
+                        <label for="inputAddress2">City Name</label>
+                        <input type="text" [attr.list]="Listname" ngModel name="sourceCity" class="form-control" placeholder="Name" (keyup)="onKey($event)">
+
+                      </div>
+                      <div class="col-md-3" >
+                        <label for="inputAddress2">Destination City Name</label>
+                        <input type="text" [attr.list]="Listname" ngModel name="destinationCity" class="form-control" placeholder="Name" (keyup)="onKey($event)">
+
+                      </div>
+                      <div class="col-md-3">
+                        <label for="inputAddress2">Travel Company</label><br>
+                        <select class='select-option' name="travelCompany" required [(ngModel)]='tCompanyOptionSelected' (ngModelChange)='onOptionsSelected($event)' style="width: 80%">
+                          <option class='option' *ngFor='let option of options' [value]="option">{{option}}</option>
+                        </select>
+                      </div>
+
+                      <div class="col-md-3">
+                        <label for="inputAddress2">Seats</label><br>
+                        <select class='select-option' name="Seats" required [(ngModel)]='RoadSeatsOptionSelected' (ngModelChange)='onOptionsSelected($event)' style="width: 80%">
+                          <option class='option' *ngFor='let option of Seatsoptions' [value]="option">{{option}}</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group row" style="margin-top: 1%;margin-left: 0.5%;">
+                  <div class="col-md-4">
+                    <label for="inputAddress2">Departure Date</label>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class='fa fa-calendar' aria-hidden="true"></i></span>
+                      </div>
+                      <input type="date" name="DeptDate" ngModel class="form-control" aria-label="Amount (to the nearest dollar)">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <label for="inputAddress2">Departure Time</label>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class='fa fa-clock-o' aria-hidden="true"></i></span>
+                      </div>
+                      <input type="time" name="DeptTime" ngModel class="form-control" aria-label="Amount (to the nearest dollar)">
+                    </div>
+                  </div>
+                  <div class="col-md-4 searchbtn">
+                    <div>
+                      <button type="submit" class="btn btn-info">Search</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </tab>
+          </tabset>
+
+        </div>
+
+      </form>
+
+      <form class="form" *ngIf="isthingsToDo">
+        <h3 style="color: white;text-align: center;">Find your perfect Places</h3>
+        <div class="form-group">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-8">
+                <label for="inputAddress2">City, Name</label>
+                <input type="text" class="form-control" placeholder="Name" (keyup)="onKey($event)">
+
+              </div>
+              <div class="col-md-4 searchbtn" style="text-align: left">
+                <a class="btn btn-info" routerLink="/ShowDeals">Search</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</main>
+
+

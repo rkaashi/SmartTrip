@@ -1,0 +1,54 @@
+<app-searchbar [Image]="ImageValue"></app-searchbar>
+<app-brand-messaging [Images]="images" [Heading]="headings" [text]="texts"></app-brand-messaging>
+
+<div class="container" style="margin-bottom: 3%;">
+  <h2 style="text-align: center">Flights of Popular Place</h2>
+  <div class="row">
+    <div class="col-3" *ngFor="let index of popularFlights">
+      <div class="title">
+        <a class="tile-link" target="_blank">
+          <img class="icon-flight-logo" src="https://pic.english.c-ctrip.com/airline_logo/32/aa.png">
+          <div class="route">
+            <span class="city city-from">{{ index.Source }}</span>
+            <i class="fa fa-arrow-circle-o-right"></i>
+            <span class="city city-to">{{ index.Destination }}</span>
+          </div>
+          <div class="date">Depart: {{ index.Date }}</div>
+          <div class="time" style="margin-left: 31px;">Time: {{ index.Time }}</div>
+          <div class="price-box">
+                <span class="c-price">
+                    <span class="price-currency">From</span>
+                    <em class="won">USD</em> <em class="price-num">{{ index.Price }}</em>
+                </span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container" style="margin-bottom: 3%;">
+  <h2 style="text-align: center">Road transportation of Popular Place</h2>
+  <div class="row">
+    <div class="col-3" *ngFor="let index of popularRoads">
+      <div class="title">
+        <a class="tile-link" target="_blank">
+          <img class="icon-flight-logo" src="https://pic.english.c-ctrip.com/airline_logo/32/aa.png">
+          <div class="route">
+            <span class="city city-from">{{ index.Source }}</span>
+            <i class="fa fa-arrow-circle-o-right"></i>
+            <span class="city city-to">{{ index.Destination }}</span>
+          </div>
+          <div class="date">Depart: {{ index.Date }}</div>
+          <div class="time" style="margin-left: 31px;">Time: {{ index.Time }}</div>
+          <div class="price-box">
+                <span class="c-price">
+                    <span class="price-currency">From</span>
+                    <em class="won">USD</em> <em class="price-num">{{ index.Price }}</em>
+                </span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

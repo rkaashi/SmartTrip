@@ -1,0 +1,34 @@
+.media-body
+{
+  margin-left: 15px;
+}
+.title{
+  border: 2px solid #a6a6a6;
+  padding: 5px;
+  border-radius: 5px;
+  padding-top: 10px;
+}
+img{
+  float: left;
+}
+.route {
+  margin-bottom: 5px;
+}
+.price-box{
+  margin-top: 7px;
+  text-align: right;
+}
+.c-price{
+  margin-right: 1px;
+}
+
+i{
+  color: darkcyan;
+}
+.price-num{
+  color: darkcyan;
+  font-weight: bold;
+}
+.title:hover {
+  border: 2px solid #28A754;
+}

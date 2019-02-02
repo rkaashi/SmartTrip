@@ -1,0 +1,52 @@
+.class1{
+  display: none;
+  padding: 0;
+}
+.container{
+  max-width: 90%;
+}
+#sidebar{
+  border-right: 1px solid #FFC107;
+  margin-bottom: 2%
+}
+
+
+hr {
+  width: 90%;
+  background-color: #FFC107;
+}
+
+input[type="checkbox"]{
+  width: 15px; /*Desired width*/
+  height: 15px; /*Desired height*/
+  cursor: pointer;
+  margin-right: 1%;
+}
+
+label{
+  display: flow-root;
+  margin-left: 5px;
+}
+
+mat-accordion{
+  margin-top: 5%
+}
+
+#group:hover{
+  box-shadow: 0px 10px 5px #E5E5E5, 0px -10px 5px #E5E5E5;
+}
+
+@media only screen and (max-width: 800px) {
+  .col-md-4 {
+    background-color: lightblue;
+  }
+}
+.reviewLink{
+  padding: 10px 50px;
+}
+
+@media only screen and (max-width: 1000px) {
+  .reviewLink{
+    padding: 2px 10px;
+  }
+}

@@ -1,0 +1,29 @@
+<h1 style="margin-top: 7%;text-align: center">
+  Business Users Info
+</h1>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="container-fluid">
+        <div class="row" id="group" style="border-top: 1px solid #E5E5E5;margin-bottom: 10px" *ngFor="let d of dbtimeslots">
+          <div class="col-sm-4" style="padding: 10px">
+            <img src="{{ d.Image }}" class="img-rounded" alt="Cinq Tre" width="100%" height="100%">
+          </div>
+          <div class="col-sm-4" style="border-right: 1px solid #a6a6a6;margin-top: 2%;margin-bottom: 2%;width: 100%">
+            <h3>{{ d.Name }}</h3>
+            <button class="btn btn-success btn-lg" style="padding: 10px 50px;" (click)="submitClaim(d)">Claim</button>
+          </div>
+
+          <div class="col-sm-4" style="margin-top: 5%">
+            <p>100 Deals on Going</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

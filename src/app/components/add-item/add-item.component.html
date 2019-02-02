@@ -1,0 +1,145 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">Add Item Form</h3> </div>
+  <div class="panel-body" style="margin-top: 2%;">
+    <form class="form" #form="ngForm" (ngSubmit)="submitForm(form)">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="form-group col-md-6 col-sm-6">
+            <label for="type">Type</label><br>
+            <select class='select-option' id="type" name="type" style="width: 80%;border-radius: 10px;height: 50%" [(ngModel)]='OptionSelected' >
+              <option class='option' *ngFor='let option of Options' [value]="option">{{option}}</option>
+            </select>
+          </div>
+          <div class="form-group col-md-6 col-sm-6">
+            <label for="city">City*</label>
+            <input type="email" ngModel class="form-control input-sm" id="city" name="location" placeholder=""> </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group col-md-6 col-sm-6">
+            <label for="price">Price*</label>
+            <input type="text" class="form-control input-sm" id="price" ngModel name="price" placeholder=""> </div>
+          <div class="form-group col-md-6 col-sm-6">
+            <label for="name">Name*</label>
+            <input type="text" class="form-control input-sm" id="name" ngModel name="name" placeholder="">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group col-md-6 col-sm-12">
+            <label for="rating">Rating</label>
+            <input type="text" class="form-control input-sm" id="rating" ngModel name="rating" placeholder="">
+          </div>
+
+          <div class="form-group col-md-6 col-sm-12">
+            <label for="image">Image Url</label>
+            <input type="text" class="form-control input-sm" id="image" ngModel name="image" placeholder="">
+          </div>
+          </div>
+        </div>
+
+
+        <div class="row" *ngIf="OptionSelected === 'Restaurant'">
+          <div class="form-group col-md-6 col-sm-6">
+            <label for="R_type">Restaurant Type</label><br>
+            <select class='select-option' id="R_type" name="R_type" style="width: 80%;border-radius: 10px;height: 50%" [(ngModel)]='restaurantOptionSelected' >
+              <option class='option' *ngFor='let option of restaurantOptions' [value]="option">{{option}}</option>
+            </select>
+          </div>
+        </div>
+
+      <ng-container *ngIf="OptionSelected === 'Flight'">
+        <div class="row">
+          <div class="form-group col-md-6 col-sm-6">
+            <label for="F_type">Flight Type</label><br>
+            <select class='select-option' id="F_type" name="F_type" style="width: 80%;border-radius: 10px;height: 50%" [(ngModel)]='flightOptionSelected' >
+              <option class='option' *ngFor='let option of flightOptions' [value]="option">{{option}}</option>
+            </select>
+          </div>
+          <div class="form-group col-md-3 col-sm-3">
+            <label>Date</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class='fa fa-calendar' aria-hidden="true"></i></span>
+              </div>
+              <input type="date" class="form-control" ngModel name="F_Date" aria-label="Amount (to the nearest dollar)">
+            </div>
+          </div>
+          <div class="form-group col-md-3 col-sm-3">
+            <label>Time</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class='fa fa-clock-o' aria-hidden="true"></i></span>
+              </div>
+              <input type="time" class="form-control" ngModel name="F_Time" aria-label="Amount (to the nearest dollar)">
+            </div>
+          </div>
+
+        </div>
+          <div class="row">
+            <div class="form-group col-md-6 col-sm-12">
+              <label for="F_source">Source</label>
+              <input type="text" class="form-control input-sm" id="F_source" ngModel name="F_source" placeholder="">
+            </div>
+
+            <div class="form-group col-md-6 col-sm-12">
+              <label for="F_Destination">Destination</label>
+              <input type="text" class="form-control input-sm" id="F_Destination" ngModel name="F_Destination" placeholder="">
+            </div>
+
+          </div>
+      </ng-container>
+
+
+
+      <ng-container *ngIf="OptionSelected === 'Road'">
+        <div class="row">
+          <div class="form-group col-md-6 col-sm-6">
+            <label for="C_type">Comapny Name</label><br>
+            <select class='select-option' id="C_type" name="C_type" style="width: 80%;border-radius: 10px;height: 50%" [(ngModel)]='roadOptionsSelected' >
+              <option class='option' *ngFor='let option of roadOptions' [value]="option">{{option}}</option>
+            </select>
+          </div>
+          <div class="form-group col-md-3 col-sm-3">
+            <label>Date</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class='fa fa-calendar' aria-hidden="true"></i></span>
+              </div>
+              <input type="date" class="form-control" name="R_Date" ngModel aria-label="Amount (to the nearest dollar)">
+            </div>
+          </div>
+          <div class="form-group col-md-3 col-sm-3">
+            <label>Time</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class='fa fa-clock-o' aria-hidden="true"></i></span>
+              </div>
+              <input type="time" class="form-control" name="R_Time" ngModel aria-label="Amount (to the nearest dollar)">
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group col-md-6 col-sm-12">
+            <label for="R_source">Source</label>
+            <input type="text" class="form-control input-sm" id="R_source" ngModel name="R_source" placeholder="">
+          </div>
+
+          <div class="form-group col-md-6 col-sm-12">
+            <label for="R_Destination">Destination</label>
+            <input type="text" class="form-control input-sm" id="R_Destination" ngModel name="R_Destination" placeholder="">
+          </div>
+
+        </div>
+      </ng-container>
+
+
+        <div class="form-group" style="text-align: right">
+          <input type="submit" class="btn btn-outline-success btn-lg" value="Submit" />
+        </div>
+
+    </form>
+  </div>
+</div>

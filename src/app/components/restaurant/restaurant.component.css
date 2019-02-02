@@ -1,0 +1,31 @@
+.media-body
+{
+  margin-left: 15px;
+}
+
+.card-deck{
+  margin: 0px auto;
+}
+.card-img-top{
+  height: 50%;
+}
+
+.card{
+  border: none;
+}
+
+.alignRight{
+  text-align: right;
+  padding-right: 0px;
+}
+
+.cardbody{
+  padding: 20px;
+  border: 1px solid #E0E0E0;
+
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+}
+.cardbody:hover{
+  border: 1px solid #28A754;
+}

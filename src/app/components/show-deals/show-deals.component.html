@@ -1,0 +1,98 @@
+<h2 style="text-align: center;margin-top: 100px">Lahore {{ Name }}s</h2>
+<form class="form-inline" style="margin-left: 25%;">
+  <div class="form-group">
+    <label for="email">Check In:</label>
+    <input type="date" class="form-control" id="email" placeholder="Enter date" name="email">
+  </div>
+  <div class="form-group">
+    <label for="pwd">Check Out:</label>
+    <input type="date" class="form-control" id="pwd" placeholder="Enter date" name="pwd">
+  </div>
+  <button type="button" class="btn btn-default" style="margin-left: 5px;">Update</button>
+</form>
+
+<hr>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3" id="sidebar" [ngClass]="{ 'class1':isSelect }" (resize)="onResize($event)">
+      <div class="list-group">
+
+        <mat-accordion>
+          <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <h4 class="font-italic">Price per night</h4>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <nouislider [connect]="true" [min]="0" [max]="15000" [step]="1" [(ngModel)]="someRange" (ngModelChange)="onChange($event)"></nouislider>
+
+            <form class="form-inline">
+              <input type="text" name="minValue" id="company" [(ngModel)]="min" style="width: 50px;text-align: center"/>
+              <div style="width: 55%;"></div>
+              <input type="text" name="maxnValue" id="contact" [(ngModel)]="max" style="width: 50px;text-align: center" />
+            </form>
+          </mat-expansion-panel>
+        </mat-accordion>
+
+
+        <mat-accordion>
+          <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <h4 class="font-italic">{{ Name }} Class</h4>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <form>
+              <div class="checkbox">
+                <label><input type="checkbox" name="check" [ngModel]="fiveStarFilter" (ngModelChange)="onFiveFilterChange($event)">5 Star</label>
+              </div>
+              <div class="checkbox">
+                <label><input type="checkbox" name="check" [ngModel]="fourStarFilter" (ngModelChange)="onFourFilterChange($event)">4 Star</label>
+              </div>
+              <div class="checkbox">
+                <label><input type="checkbox" name="check" [ngModel]="threeStarFilter" (ngModelChange)="onThreeFilterChange($event)">3 Star</label>
+              </div>
+            </form>
+
+
+          </mat-expansion-panel>
+        </mat-accordion>
+
+
+      </div>
+    </div>
+    <div class="col-sm-9">
+      <div class="container-fluid">
+        <div class="row" id="group" *ngFor="let d of dbtimeslots | paginate: { itemsPerPage: 2, currentPage: p }" style="border-top: 1px solid #E5E5E5;margin-bottom: 10px" >
+          <!--<ng-container *ngIf="check(d)">-->
+          <div class="col-sm-4" style="padding: 10px" >
+            <img src="{{ d.Image }}" class="img-rounded" alt="Cinq Tre" width="100%" height="100%">
+          </div>
+          <div class="col-sm-4" style="border-right: 1px solid #a6a6a6;margin-top: 2%;margin-bottom: 2%;width: 100%">
+            <h3>{{ d.Name }}</h3>
+            <h3 style="text-align: right" *ngIf="d.Price">PKR {{ d.Price }}</h3>
+            <h3 style="text-align: right" *ngIf="d.Type">{{ d.Type }}</h3>
+            <a class="btn btn-success btn-lg reviewLink" (click)="SubmitDeals(d)">View Deals</a>
+          </div>
+
+          <div class="col-sm-4" style="margin-top: 5%">
+            <p>72 reviews</p>
+            <p>Free parking</p>
+          </div>
+          <!--</ng-container>-->
+        </div>
+        <div class="row">
+          <div class="col-12" style="text-align: center;margin-top: 5%">
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+

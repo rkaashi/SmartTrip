@@ -1,0 +1,38 @@
+.jumbotron{
+  padding-top: 12em;
+  /*background-image: url("Hotal.png");*/
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+
+}
+
+li.active > a {
+  border-bottom:3px solid #FFC107;
+}
+
+li >a {
+  font-family: 'Raleway', Helvetica, Arial, sans-serif;
+  font-size: 23px;
+  font-weight:bolder;
+}
+
+.searchbtn{
+  text-align: left;
+  margin-top: 33px;
+}
+
+label,.sp{
+  color: white
+}
+
+span{
+  padding-left: 5px;
+}
+
+select{
+  border-radius: 5px;
+  width: 50%;
+  height: 50%;
+}
+
